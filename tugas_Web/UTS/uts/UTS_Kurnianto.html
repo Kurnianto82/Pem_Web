@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Data Siswa</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <style>     
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .form-container {
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 16px;
+            margin: 0;
+            padding: 10px;
+            color: white;
+        }
+
+        .section label {
+            display: block;
+            margin-top: 5px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .hobby h2 {
+            background-color: #FFA500;
+        }
+
+        .gender h2 {
+            background-color: #800080;
+        }
+
+        .favorite h2 {
+            background-color: #32CD32;
+        }
+
+        .section:first-of-type h2 {
+            background-color: #4CAF50;
+        }
+
+        input[type="checkbox"]:disabled + label,
+        input[type="radio"]:disabled + label {
+            color: #aaa;
+        }
+
+        .buttons {
+            display: flex;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #FFA500;
+        }
+
+        button[type="reset"] {
+            background-color: #FFA500;
+        }
+    </style>
+    <div class="form-container">
+        <h1>FORMULIR DATA SISWA</h1>
+        
+        <div class="section">
+            <h2>DATA SISWA</h2>
+            <label for="nim">NIM</label>
+            <input type="text" id="nim" name="nim">
+            <label for="name">NAMA LENGKAP</label>
+            <input type="text" id="name" name="name">
+        </div>
+
+        <div class="section hobby">
+            <h2>Hoby Anda</h2>
+            <label><input type="checkbox" name="hobby" value="games" checked> Games</label><br>
+            <label><input type="checkbox" name="hobby" value="musik"> Musik</label><br>
+            <label><input type="checkbox" name="hobby" value="renang"> Renang</label><br>
+            <label><input type="checkbox" name="hobby" value="makan" disabled> Makan (Disabled)</label>
+        </div>
+
+        <div class="section gender">
+            <h2>Jenis Kelamin Anda</h2>
+            <label><input type="radio" name="gender" value="pria"> Pria</label><br>
+            <label><input type="radio" name="gender" value="wanita"> Wanita</label><br>
+            <label><input type="radio" name="gender" value="tidak_tahu" disabled> Tidak Tahu (Disabled)</label>
+        </div>
+
+        <div class="section favorite">
+            <h2>Tempat Favorit</h2>
+            <select name="favorite" id="favorite">
+                <option>Pilih salah satu</option>
+                <option>Kamar</option>
+                <option>Teras</option>
+            </select>
+        </div>
+
+        <div class="buttons">
+            <button type="submit">Kirim</button>
+            <button type="reset">Batal</button>
+        </div>
+    </div>
+</body>
+</html>

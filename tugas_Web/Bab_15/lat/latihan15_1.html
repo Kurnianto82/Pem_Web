@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rincian Tagihan Listrik</title>
+    <script>
+        function hitungTagihan() {
+            // Ambil data dari input
+            const nama = document.getElementById("namaPelanggan").value;
+            const kategori = document.getElementById("kategori").value;
+
+            // Validasi input
+            if (!nama) {
+                alert("Silakan masukkan nama pelanggan!");
+                return;
+            }
+
+            // Atur tarif berdasarkan kategori
+            let abodemen = 0, tarifPerKwh = 0, pajakPersen = 0;
+
+            if (kategori === "Sosial") {
+                abodemen = 10000;
+                tarifPerKwh = 300;
+                pajakPersen = 0; // 0%
+            } else if (kategori === "Rumah") {
+                abodemen = 30000;
+                tarifPerKwh = 500;
+                pajakPersen = 10; // 10%
+            } else if (kategori === "Industri") {
+                abodemen = 50000;
+                tarifPerKwh = 1000;
+                pajakPersen = 30; // 30%
+            }
+
+            // Kosongkan tabel sebelum menambahkan rincian baru
+            const hasilTable = document.getElementById("hasilTable");
+            hasilTable.innerHTML = "";
+
+            // Loop dari 1 hingga 10 KWH
+            for (let pemakaian = 1; pemakaian <= 10; pemakaian++) {
+                const biayaKwh = pemakaian * tarifPerKwh;
+                const pajak = ((biayaKwh + abodemen) * pajakPersen) / 100;
+                const totalBiaya = abodemen + biayaKwh + pajak;
+
+                // Tambahkan baris ke tabel
+                hasilTable.innerHTML += `
+                    <tr>
+                        <td>${pemakaian} KWH</td>
+                        <td>Rp${biayaKwh.toLocaleString()}</td>
+                        <td>Rp${pajak.toLocaleString()}</td>
+                        <td>Rp${totalBiaya.toLocaleString()}</td>
+                    </tr>
+                `;
+            }
+        }
+
+        function resetForm() {
+            document.getElementById("formTagihan").reset();
+            document.getElementById("hasilTable").innerHTML = ""; // Kosongkan tabel hasil
+        }
+    </script>
+</head>
+<body>
+    <h1>Rincian Tagihan Listrik</h1>
+    <h2>PLN BANDUNG</h2>
+    <form id="formTagihan">
+        <label>Nama Pelanggan:</label>
+        <input type="text" id="namaPelanggan" /><br><br>
+
+        <label>Kategori:</label>
+        <select id="kategori">
+            <option value="Sosial">Sosial</option>
+            <option value="Rumah">Rumah</option>
+            <option value="Industri">Industri</option>
+        </select><br><br>
+
+        <label>Jumlah Pemakaian Listrik (KWH):</label>
+        <input type="number" id="pemakaian" /><br><br>
+
+        <button type="button" onclick="hitungTagihan()">Proses</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+
+    <h3>Rincian Perhitungan</h3>
+    <table border="1" style="border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr>
+                <th>Pemakaian (KWH)</th>
+                <th>Biaya Pemakaian</th>
+                <th>Pajak</th>
+                <th>Total Biaya</th>
+            </tr>
+        </thead>
+        <tbody id="hasilTable">
+            <!-- Rincian perhitungan akan ditambahkan di sini -->
+        </tbody>
+    </table>
+</body>
+</html>

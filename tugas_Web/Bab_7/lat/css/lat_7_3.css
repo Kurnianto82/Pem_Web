@@ -1,0 +1,88 @@
+ /* Mencegah scroll horizontal */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    overflow-x: hidden; /* Mencegah scroll kanan kiri */
+    box-sizing: border-box;
+}
+
+/* Mengatur agar tidak melebihi layar */
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mengatur layout tabel agar pas dengan layar */
+table {
+    width: 100%; /* Tabel memenuhi lebar layar */
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    word-wrap: break-word; /* Menghindari teks keluar dari kotak */
+}
+
+th {
+    background-color: #2980b9;
+    color: white;
+}
+
+td img {
+    width: 100%; /* Gambar menyesuaikan ukuran kolom */
+    max-width: 500px; /* Membatasi ukuran gambar agar tidak terlalu besar */
+    border-radius: 10px;
+}
+
+/* Header dengan posisi tetap di atas */
+.header {
+    background-color: #2980b9;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Tambahkan padding pada konten agar tidak tertutup header */
+.content {
+    padding-top: 120px;
+}
+
+/* Footer tetap di bagian bawah */
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Tombol CTA (Call to Action) */
+.cta {
+    background-color: #2980b9;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.cta:hover {
+    background-color: #1c5981;
+}

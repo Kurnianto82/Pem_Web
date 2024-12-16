@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deret Bilangan Genap Habis Dibagi 3</title>
+</head>
+<body>
+    <h1>Deret Bilangan Genap yang Habis Dibagi 3</h1>
+
+    <label for="start">Nilai Awal:</label>
+    <input type="number" id="start" required>
+    <br>
+    <label for="end">Nilai Akhir:</label>
+    <input type="number" id="end" required>
+    <br><br>
+    <button onclick="generateSequence()">Tampilkan Deret</button>
+
+    <script>
+        function generateSequence() {
+        
+            const start = parseInt(document.getElementById("start").value);
+            const end = parseInt(document.getElementById("end").value);
+
+            if (isNaN(start) || isNaN(end)) {
+                document.write("<p>Nilai awal dan akhir harus berupa angka.</p>");
+                return;
+            }
+
+            let i = start;
+            let sequence = [];
+            let sum = 0;
+
+        
+            while (i <= end) {
+                if ((i / 2) === Math.floor(i / 2) && (i / 3) === Math.floor(i / 3)) {
+                    sequence.push(i);
+                    sum += i;
+                }
+                i++;
+            }
+
+            document.write("<p>Nilai Awal: " + start + "</p>");
+            document.write("<p>Nilai Akhir: " + end + "</p>");
+            document.write("<p>Deret yang tampil: " + sequence.join(", ") + "</p>");
+            document.write("<p>Jumlah deret bilangan: " + sequence.length + " bilangan</p>");
+            document.write("<p>Jumlah nilai bilangan tersebut: " + sum + "</p>");
+        }
+    </script>
+</body>
+</html>

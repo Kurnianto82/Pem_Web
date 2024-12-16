@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Penjualan Motor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        form, table {
+            margin: 0 auto;
+            width: 50%;
+            text-align: left;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>PROGRAM PENJUALAN MOTOR</h2>
+    <div class="container">
+        <div class="form-section">
+            <form id="motorForm">
+                <label for="merkMotor">Merk Motor:</label>
+                <select id="merkMotor" required>
+                    <option value="" disabled selected>Pilih Merk Motor</option>
+                    <option value="15000000">Honda</option>
+                    <option value="14000000">Yamaha</option>
+                    <option value="13000000">Suzuki</option>
+                </select>
+
+                <label>Aksesoris:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" value="450000"> Velg Racing</label>
+                    <label><input type="checkbox" value="250000"> Helm</label>
+                    <label><input type="checkbox" value="300000"> Jaket</label>
+                </div>
+
+                <label>Cara Pembayaran:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="caraBayar" value="0" required> Tunai</label>
+                    <label><input type="radio" name="caraBayar" value="0.1"> Kredit</label>
+                </div>
+
+                <label for="harga">Harga:</label>
+                <input type="text" id="harga">
+
+                <label for="bungaDiskon">Bunga/Diskon:</label>
+                <input type="number" id="bungaDiskon">
+
+                <label for="total">Total:</label>
+                <input type="text" id="total">
+
+                <div class="buttons">
+                    <button type="button" onclick="proses()">Proses</button>
+                    <button type="reset" class="reset" onclick="resetForm()">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function proses() {
+                const merkMotor = document.getElementById('merkMotor');
+                const aksesoris = document.querySelectorAll('.checkbox-group input:checked');
+                const caraBayar = document.querySelector('input[name="caraBayar"]:checked');
+                const bungaDiskon = parseFloat(document.getElementById('bungaDiskon').value) || 0;
+                const hargaInput = document.getElementById('harga');
+                const totalInput = document.getElementById('total');
+        
+                let hargaMotor = parseFloat(merkMotor.value) || 0; // Harga motor
+                let hargaAksesoris = 0; // Total harga aksesoris
+        
+                // Hitung harga aksesoris
+                aksesoris.forEach((item) => {
+                    hargaAksesoris += parseFloat(item.value);
+                });
+        
+                // Harga awal (tanpa diskon)
+                let totalHargaAwal = hargaMotor + hargaAksesoris;
+        
+                // Tampilkan harga awal di input harga
+                hargaInput.value = `Rp ${totalHargaAwal.toLocaleString('id-ID')}`;
+        
+                // Hitung total akhir dengan bunga atau diskon
+                const bunga = parseFloat(caraBayar.value) || 0; // Bunga dari cara bayar
+                let totalHargaAkhir = totalHargaAwal + (totalHargaAwal * bunga); // Tambah bunga
+                totalHargaAkhir -= bungaDiskon; // Kurangi diskon
+        
+                // Tampilkan total akhir di input total
+                totalInput.value = `Rp ${totalHargaAkhir.toLocaleString('id-ID')}`;
+            }
+        
+            function resetForm() {
+                document.getElementById('motorForm').reset();
+                document.getElementById('harga').value = '';
+                document.getElementById('total').value = '';
+            }
+        </script>
+        
+</body>
+</html>
